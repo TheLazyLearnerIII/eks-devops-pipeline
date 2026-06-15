@@ -42,7 +42,21 @@ resource "aws_iam_role_policy_attachment" "attachment-eks" {
     policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
 }
 
-resource "aws_iam_role_policy_attachment" "attachment-eks-describe" {
-    role       = aws_iam_role.github-actions-eks-role.name
-    policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+resource "aws_iam_role_policy" "github_actions_eks_policy" {
+  name = "github-actions-eks-policy"
+  role = aws_iam_role.github-actions-eks-role.name
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "eks:DescribeCluster",
+          "eks:ListClusters"
+        ]
+        Resource = "*"
+      }
+    ]
+  })
 }
