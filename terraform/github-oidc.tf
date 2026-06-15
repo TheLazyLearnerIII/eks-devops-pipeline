@@ -41,3 +41,8 @@ resource "aws_iam_role_policy_attachment" "attachment-eks" {
     role = aws_iam_role.github-actions-eks-role.name
     policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
 }
+
+resource "aws_iam_role_policy_attachment" "attachment-eks-describe" {
+    role       = aws_iam_role.github-actions-eks-role.name
+    policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+}
