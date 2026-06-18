@@ -60,3 +60,17 @@ resource "aws_iam_role_policy" "github_actions_eks_policy" {
     ]
   })
 }
+resource "aws_eks_access_entry" "github_actions" {
+  cluster_name  = module.eks.cluster_name
+  principal_arn = aws_iam_role.github-actions-eks-role.arn
+  type          = "STANDARD"
+}
+resource "aws_eks_access_policy_association" "github_actions" {
+  cluster_name  = module.eks.cluster_name
+  principal_arn = aws_iam_role.github-actions-eks-role.arn
+  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+
+  access_scope {
+    type = "cluster"
+  }
+}
