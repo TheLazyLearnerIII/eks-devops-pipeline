@@ -198,7 +198,7 @@ Push any change to `main` and GitHub Actions will automatically:
 
 ---
 
-## 💡 Key Concepts Demonstrated
+## Key Concepts Demonstrated
 
 - **Infrastructure as Code** — entire AWS infrastructure defined in Terraform, reproducible with a single command
 - **Containerization** — Flask app packaged in Docker with optimized layer caching
@@ -209,7 +209,7 @@ Push any change to `main` and GitHub Actions will automatically:
 - **Least Privilege** — IAM roles scoped to minimum required permissions
 - **Network Security** — worker nodes isolated in private subnets, only load balancer exposed publicly
 
-## 🗑️ Teardown
+## Teardown
 
 ```bash
 cd terraform
